@@ -1,0 +1,11 @@
+.feedback{
+    display: flex;
+    font-family: serif;
+    background-image: url("background_image.jpg");
+    image-resolution: 621 x 492;
+}
+#product {
+    color: cyan;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+}
