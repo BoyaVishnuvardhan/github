@@ -1,0 +1,44 @@
+import React from 'react';
+
+const CartItem = ({ item, onRemoveItem, onSaveForLater }) => {
+  // Function to format price with currency symbol
+  const formatPrice = (price) => Rs. ${price};
+
+  return (
+    <div className="cart-item">
+      <div className="item-details">
+        <p>{item.name}</p>
+        <p>{item.size}</p>
+      </div>
+      <div className="item-actions">
+        {/* Button to remove item */}
+        <button onClick={() => onRemoveItem(item.id)}>
+          {item.name === 'Apple Juice' ? 'Remove all' : 'Remove'}
+        </button>
+        {/* Button to save for later (optional functionality) */}
+        {onSaveForLater && (
+          <button onClick={() => onSaveForLater(item.id)}>Save for later</button>
+        )}
+      </div>
+      <div className="item-price">{formatPrice(item.price)}</div>
+    </div>
+  );
+};
+
+const ShoppingCart = ({ items, onRemoveItem, onSaveForLater }) => {
+  return (
+    <div className="shopping-cart">
+      <h2>Shopping Cart</h2>
+      {items.map((item) => (
+        <CartItem
+          key={item.id}
+          item={item}
+          onRemoveItem={onRemoveItem}
+          onSaveForLater={onSaveForLater} // Pass function if available
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ShoppingCart;
